@@ -1,11 +1,26 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
-function PrivateRoute() {
-  return (<Route/>);
+const PrivateRoute = (props) => {
+  const { component: Component, ...rest } = props
+  
+  return (
+    <Route
+    {...rest}
+    render={(renderProps) => {
+      if(localStorage.getItem('token')){
+        return <Component {...renderProps}/>
+      }else{
+        return<Redirect to='/view' />
+      }
+    }}
+    
+  />);
+
 }
 
 export default PrivateRoute;
 
 //Task List:
-//1. Complete PrivateRoute
+//1. Complete PrivateRoute 
+// I'm not sure how to do 2 private routes???

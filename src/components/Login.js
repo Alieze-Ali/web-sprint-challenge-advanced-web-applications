@@ -77,9 +77,9 @@ export default Login;
 
 //2. Add in a p tag with the id="error" under the login form for use in error display. - ok 
 
-//3. Add in necessary local state to support login form and error display.
+//3. Add in necessary local state to support login form and error display. -ok I think ????
 
-//4. When login form is submitted, make an http call to the login route. Save the auth token on a successful response and redirect to view page.
+//4. When login form is submitted, make an http call to the login route. Save the auth token on a successful response and redirect to view page. - ??? problem
 
 //5. If the response is not successful, display an error statement. **a server provided error message can be found in ```err.response.data```**
 
