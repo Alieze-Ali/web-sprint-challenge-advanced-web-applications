@@ -1,16 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Article from './Article';
 import EditForm from './EditForm';
+import articleService from '../services/articleServices';
+
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const View = (props) => {
     const [articles, setArticles] = useState([]);
     const [editing, setEditing] = useState(false);
     const [editId, setEditId] = useState();
 
+
+    // Something is wrong here, Idk what it is, when active, my view disappears
+    // useEffect(() => {
+    //     articleService()
+    //     //.put(`http://localhost:5000/api/articles/:id`)
+    //     //.post(`http://localhost:5000/api/articles`)
+    //     //.get(`http://localhost:5000/api/articles`)
+    //     //.get(`http://localhost:5000/api/articles/:id`)
+    //     .then(res => {
+    //         setArticles(res.data)
+    //         console.log(res)
+    //     })
+    // }, []);
+
+
+    // Not sure this is correct
     const handleDelete = (id) => {
-    }
+        axiosWithAuth()
+        .delete(`http://localhost:5000/api/articles/:id`)
+        .then(res => {
+            console.log('deleted response', res)
+            setArticles(articles.filter(article => article.id !== +res.data))
+        })
+    };
 
     const handleEdit = (article) => {
     }
