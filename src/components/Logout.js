@@ -1,7 +1,20 @@
-import React from 'react';
+//import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+
 
 const Logout = () => {        
-    return(<div></div>);
+    
+    
+    return(
+    <div>
+        <h1>Logout</h1>
+        <button
+            id="submit"
+            type="submit">
+            Logout
+        </button>
+    </div>);
 }
 
 export default Logout;
