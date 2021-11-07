@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const axiosWithAuth = ()=> {
+export const axiosWithAuth = ()=> {
     
 }
 
