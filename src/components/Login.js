@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -11,7 +11,7 @@ const Login = () => {
     const [error, setError] = useState("");
     const { push } = useHistory();
 
-    // redirect
+    // token request and redirect
     const handleSubmit = (evt) => {
         evt.preventDefault()
         axiosWithAuth()
@@ -23,19 +23,29 @@ const Login = () => {
         })
         .catch(err => setError(err.response.data.error))
     }
+
+    // input changes
+    const handleChange = (evt) => {
+        setForm({
+                ...form,
+                [evt.target.name]: evt.target.value
+            })
+    }
+        console.log(handleChange)
     
     return(<ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
-                <form>
+                
+                <form onSubmit={handleSubmit}>
                     <label>
                         username:
                         <input 
                             id="username"
                             name="username"
-                            value=""
-                            onChange=""/>
+                            value={form.username}
+                            onChange={handleChange}/>
                     </label>
 
                     <label>
@@ -43,8 +53,8 @@ const Login = () => {
                         <input
                             id="password"
                             name="password" 
-                            value=""
-                            onChange=""/>
+                            value={form.password}
+                            onChange={handleChange}/>
                     </label>
 
                     <button
@@ -54,9 +64,10 @@ const Login = () => {
                     </button>
                 </form>
                
-               <p id="error" className="error">Error</p>
+               <p id="error" className="error">{error}</p>
         </ModalContainer>
-    </ComponentContainer>);
+    </ComponentContainer>
+    );
 }
 
 export default Login;
