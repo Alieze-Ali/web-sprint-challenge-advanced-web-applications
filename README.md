@@ -38,7 +38,7 @@ In this project, you will demonstrate your mastery of these skills by creating *
 ### Login Authentication
 > *Build a login form to authenticate your users along with all the components and utilities needed to support authentication.*
 
-* [-] In `Login.js`, build all UI and state functionality needed to capture a username and password. On a successful login, redirect user to the `View.js` component. -??? issue on redirect
+* [-] In `Login.js`, build all UI and state functionality needed to capture a username and password. On a successful login, redirect user to the `View.js` component. -??? ok I think ???
 
 * [-] **Make sure that the input for your username and password includes the id="username" and id="password" attributes. Codegrade autotests will fail without them.**
 
@@ -48,20 +48,21 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 * [-] **Make sure your error p tag has an id="error" attribute attached. Codegrade autotests will fail without them.**
 
-* [x] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request. Complete successful login auth flow and redirect to `View.js.` -???redirect issues
+* [-] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request. Complete successful login auth flow and redirect to `View.js.` -???ok I think ???
 
-* [x] Display an appropriate error message when login is not successful. - need error message to show
+* [x] Display an appropriate error message when login is not successful. - ??? need error message to show
 
-### Route Authentication
+### Route Authentication -not sure if I did correctly???
 * [-] Build a `PrivateRoute` component within the components folder. - this is already done
 
-* [ ] Use the `PrivateRoute` component to build a route rendering `View.js` to the path `/view`.
+* [-] Use the `PrivateRoute` component to build a route rendering `View.js` to the path `/view`.
 
-* [ ] Use the `PrivateRoute` component to build a route rendering `Logout.js` to the path `/logout`.
+* [x] Use the `PrivateRoute` component to build a route rendering `Logout.js` to the path `/logout`. - I'm not rue how to build 2 ????
 
 ### Request Authentication
 > *Complete the requests needed to execute all CRUD functions.*
-* [ ] Build a `axiosWithAuth` module within the utils folder to create an instance of axios with the authentication header.
+* [-] Build a `axiosWithAuth` module within the utils folder to create an instance of axios with the authentication header. - done already
+
 * [ ] Complete the `services/articleService.js` module. It should use make an authenticated call to retrieve and return all articles from the server.
 
 * [ ] In `View.js`, when the component mounts, use `articleService` to make an http request and add all articles to state.
@@ -81,12 +82,16 @@ In this project, you will demonstrate your mastery of these skills by creating *
 ### Advanced Testing
 > *Add the following tests within Article.test.js.*
 * [ ] Build a test that shows the `Article` component, given the correct props, can render without errors.
+
 * [ ] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
+
 * [ ] The `Article` component should display "Associated Press" when an author attribute is not avalible. Build a test that verifies that that is true.
+
 * [ ] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
 
 > *Add the following tests within View.test.js.*
 * [ ] Build a test that shows the `View` component can render zero articles without errors. Make sure the mock service called made when View mounts.
+
 * [ ] Build a test that shows the `View` component can render three articles without errors. Make sure the mock service called made when View mounts.
 
 ## Important Notes:
