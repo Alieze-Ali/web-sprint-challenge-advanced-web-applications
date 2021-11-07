@@ -26,6 +26,7 @@ const View = (props) => {
     //     })
     // }, []);
 
+  
 
     // Not sure this is correct
     const handleDelete = (id) => {
@@ -38,6 +39,11 @@ const View = (props) => {
     };
 
     const handleEdit = (article) => {
+        axiosWithAuth()
+        .put(`http://localhost:5000/api/articles/${article.id}`, article)
+        .then(res => {
+            console.log('Put request results', res)
+        })
     }
 
     const handleEditSelect = (id)=> {
