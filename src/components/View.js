@@ -6,6 +6,7 @@ import EditForm from './EditForm';
 import articleService from '../services/articleServices';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { Route, useParams, useHistory } from 'react-router-dom';
 
 const View = (props) => {
     const [articles, setArticles] = useState([]);
@@ -14,46 +15,52 @@ const View = (props) => {
 
 
     // Something is wrong here, Idk what it is, when active, my view disappears
-    // useEffect(() => {
-    //     articleService()
-    //     //.put(`http://localhost:5000/api/articles/:id`)
-    //     //.post(`http://localhost:5000/api/articles`)
-    //     //.get(`http://localhost:5000/api/articles`)
-    //     //.get(`http://localhost:5000/api/articles/:id`)
-    //     .then(res => {
-    //         setArticles(res.data)
-    //         console.log(res)
-    //     })
+    // useEffect((props) => {
+    //     articleService( setArticles(props.resetArticles))
+       
     // }, []);
 
-  
+   
 
     // Not sure this is correct
     const handleDelete = (id) => {
         axiosWithAuth()
-        .delete(`http://localhost:5000/api/articles/:id`)
+        .delete(`http://localhost:5000/api/articles/${id}`)
         .then(res => {
-            console.log('deleted response', res)
-            setArticles(articles.filter(article => article.id !== +res.data))
+            props.setArticles(res.data)
+            push('/articles')
+            // console.log('deleted response', res)
+            // setArticles(articles.filter(article => article.id !== +res.data))
         })
+        .catch(err => console.log(err))
     };
 
     const handleEdit = (article) => {
-        axiosWithAuth()
-        .put(`http://localhost:5000/api/articles/${article.id}`, article)
-        .then(res => {
-            console.log('Put request results', res)
-        })
+        push(`/setArticles/${id}`)
+        // axiosWithAuth()
+        // .put(`http://localhost:5000/api/articles/${article.id}`, article)
+        // .then(res => {
+        //     console.log('Put request results', res)
+        // })
     }
 
     const handleEditSelect = (id)=> {
-        setEditing(true);
-        setEditId(id);
+        setEditing(false);
+        //setEditId(id);
     }
 
     const handleEditCancel = ()=>{
         setEditing(false);
     }
+
+    // componentDidMount() {
+    //     getData();
+    // }
+
+    // componentDidMount((props) => {
+    //          articleService( setArticles(props.resetArticles))
+           
+    //      }, []);
 
     return(<ComponentContainer>
         <HeaderContainer>View Articles</HeaderContainer>

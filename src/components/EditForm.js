@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -32,8 +33,15 @@ const EditForm = (props)=> {
 
     const handleCancel = (e) => {
         e.preventDefault();
-        handleEditCancel();
-    }
+        handleEditCancel(
+            axios.put(`http://localhost:5000/api/articles/${editId}`, item)
+            .then(res => {
+                props.setArticle(res.data)
+                props.history.push(`/article/${editId}`)
+            })
+            .catch(err => console.log(err))
+        )};
+    
 
     return(<FormContainer onSubmit={handleSubmit}>
         <h3>Edit Article</h3>
