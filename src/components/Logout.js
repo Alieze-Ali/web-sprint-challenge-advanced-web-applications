@@ -5,7 +5,13 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Logout = () => {        
     
-    
+    axiosWithAuth().post(`http://localhost:5000/api/articles/:id`)
+    .then(res => {
+        localStorage.removeItem('token')
+        window.location.pathname = './login'
+    })
+    .catch(err => console.log(err))
+
     return(
     <div>
         <h1>Logout</h1>
